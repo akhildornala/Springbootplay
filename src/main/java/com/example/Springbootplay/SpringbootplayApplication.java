@@ -8,6 +8,7 @@ public class SpringbootplayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootplayApplication.class, args);
+		System.out.println("Springbootplay started");
 	}
 
 }
