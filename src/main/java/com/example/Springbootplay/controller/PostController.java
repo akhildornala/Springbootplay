@@ -2,6 +2,7 @@ package com.example.Springbootplay.controller;
 
 import com.example.Springbootplay.model.Post;
 import com.example.Springbootplay.repository.PostRepository;
+import com.example.Springbootplay.repository.SearchRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,9 @@ public class PostController {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    SearchRepository searchRepository;
+
     @GetMapping("/allPosts")
     @CrossOrigin
     public List<Post> getAllPosts() {
@@ -33,10 +37,18 @@ public class PostController {
     }
 
     @PostMapping("/addPost")
-    @CrossOrigin
+//    @CrossOrigin
     public void addPost(@RequestBody Post post) {
         postRepository.save(post);
     }
+
+    @GetMapping("/posts/{text}")
+    @CrossOrigin
+    public List<Post> search(@PathVariable String text)
+    {
+        return searchRepository.findByText(text);
+    }
+
 
 
 }
