@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -19,12 +20,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public Employee findByName(String name) {
-        Employee e = employeeRepository.findByName(name);
-        if (e == null) {
-            throw new EmployeeNotFoundException("employee not found with name:" + name);
+    public Employee findById(int empId) {
+        Employee e = employeeRepository.findByEmpId(empId);
+        if (e != null) {
+            return e;
         }
-        return e;
+        throw new EmployeeNotFoundException("employee not found with empId:" + empId);
+
     }
 
     public List<Employee> findAllEmployees() {
@@ -39,17 +41,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public void updateEmployee(Employee employee) {
-        Employee empExisting = employeeRepository.findByName(employee.getName());
+        Employee empExisting = employeeRepository.findByEmpId(employee.getEmpId());
         if (empExisting == null) {
             throw new EmployeeNotFoundException("Employee not found to update with name:" + employee.getName());
         }
-        BeanUtils.copyProperties(employee, empExisting);
+        BeanUtils.copyProperties(employee, empExisting, "id");
         employeeRepository.save(empExisting);
     }
 
 
-    public void deleteEmployee(String name) {
-        employeeRepository.deleteById(name);
+    public void deleteEmployee(int empId) {
+        employeeRepository.deleteByEmpId(empId);
     }
 
 

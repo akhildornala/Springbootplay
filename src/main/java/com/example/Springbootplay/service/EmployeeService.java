@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface EmployeeService {
 
-    public Employee findByName(String name);
+    public Employee findById(int name);
 
     public List<Employee> findAllEmployees();
 
@@ -17,5 +17,5 @@ public interface EmployeeService {
 
     public void updateEmployee(Employee employee);
 
-    public void deleteEmployee(String name);
+    public void deleteEmployee(int empId);
 }

@@ -15,9 +15,9 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @GetMapping("/find/{name}")
-    public Employee findEmployee(@PathVariable String name) {
-        return employeeService.findByName(name);
+    @GetMapping("/find/{empId}")
+    public Employee findEmployee(@PathVariable int empId) {
+        return employeeService.findById(empId);
     }
 
     @GetMapping("/findAll")
@@ -36,9 +36,9 @@ public class EmployeeController {
     }
 
 
-    @DeleteMapping("/delete/{name}")
-    public void deleteEmployee(@PathVariable String name) {
-        employeeService.deleteEmployee(name);
+    @DeleteMapping("/delete/{empId}")
+    public void deleteEmployee(@PathVariable int empId) {
+        employeeService.deleteEmployee(empId);
     }
 
 }
