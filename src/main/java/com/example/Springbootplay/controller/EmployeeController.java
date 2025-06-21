@@ -35,4 +35,10 @@ public class EmployeeController {
         employeeService.updateEmployee(employee);
     }
 
+
+    @DeleteMapping("/delete/{name}")
+    public void deleteEmployee(@PathVariable String name) {
+        employeeService.deleteEmployee(name);
+    }
+
 }

@@ -48,4 +48,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
+    public void deleteEmployee(String name) {
+        employeeRepository.deleteById(name);
+    }
+
+
 }
