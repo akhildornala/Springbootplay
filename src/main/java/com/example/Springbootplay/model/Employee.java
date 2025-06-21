@@ -13,6 +13,8 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Setter
+@Getter
 @Document(collection = "Employee")
 public class Employee {
 
