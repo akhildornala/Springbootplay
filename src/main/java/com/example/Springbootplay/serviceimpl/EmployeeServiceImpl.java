@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public List<Employee> findAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
-        Comparator<Employee> comp = (o1, o2) -> o1.getName().compareTo(o2.getName());
+        Comparator<Employee> comp = (o1, o2) -> o1.getEmpId() - o2.getEmpId();
         employees.sort(comp);
         return employees;
     }
