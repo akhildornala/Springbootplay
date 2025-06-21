@@ -3,11 +3,14 @@ package com.example.Springbootplay.controller;
 
 import com.example.Springbootplay.model.Employee;
 import com.example.Springbootplay.service.EmployeeService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "tag_at_class_level", description = "Employee related class level tag")
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -15,6 +18,10 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
+
+    @Tag(name = "find employee")
+    @Tag(name = "findEmployee_tag_at_method_level")
+    @Tag(name = "findEmployee")
     @GetMapping("/find/{empId}")
     public Employee findEmployee(@PathVariable int empId) {
         return employeeService.findById(empId);
