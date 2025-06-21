@@ -3,7 +3,8 @@ package com.example.Springbootplay;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"com.example.Springbootplay.model", "com.example.Springbootplay.controller"})
+//@SpringBootApplication(scanBasePackages = {"com.example.Springbootplay.model", "com.example.Springbootplay.controller"})
+@SpringBootApplication
 public class SpringbootplayApplication {
 
 	public static void main(String[] args) {
