@@ -5,6 +5,7 @@ import com.example.Springbootplay.model.Employee;
 import com.example.Springbootplay.service.EmployeeService;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Tag(name = "tag_at_class_level", description = "Employee related class level tag")
 @RestController
 @RequestMapping("/employee")
+@Slf4j
 public class EmployeeController {
 
     @Autowired
@@ -24,6 +26,17 @@ public class EmployeeController {
     @Tag(name = "findEmployee")
     @GetMapping("/find/{empId}")
     public Employee findEmployee(@PathVariable int empId) {
+        log.debug("input is {}", empId);
+        log.warn("warn input is {}", empId);
+        log.warn("error input is {}", empId);
+        try {
+            log.debug("trying to fetch {}", empId);
+            int res = 5 / empId;
+            log.debug("res {}", res);
+        } catch (Exception e) {
+            log.error("error for input {}", e.toString());
+        }
+
         return employeeService.findById(empId);
     }
 
