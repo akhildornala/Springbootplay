@@ -36,4 +36,5 @@ public class WelcomeController {
     public String couple(@PathVariable String hubby, @PathVariable String wife) {
         return "we are couple " + hubby + " and " + wife;
     }
+
 }
