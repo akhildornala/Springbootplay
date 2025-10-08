@@ -37,4 +37,5 @@ public class WelcomeController {
         return "we are couple " + hubby + " and " + wife;
     }
 
+
 }
