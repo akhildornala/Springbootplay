@@ -18,7 +18,6 @@ public class GlobalExceptionHandler {
 
     }
 
-
     
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handleRunTimeException(RuntimeException exception) {
